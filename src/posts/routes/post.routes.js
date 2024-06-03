@@ -10,6 +10,6 @@ router.get("/", postController.getAllPosts);
 router.get("/:postId", postController.getPostById);
 router.get("/:userId", postController.getUserPosts);
 router.put("/:postId", postController.updatePost);
-router.delete("/:postId", postController.updatePost);
+router.delete("/:postId", postController.deletePost);
 
 export default router;

@@ -30,7 +30,7 @@ class CommentController {
       throw new Error("post id is required", 400);
     }
 
-    const { comments, status } = CommentModel.add(userId, postId, content);
+    const { comments, status } = CommentModel.getAll(userId, postId, content);
     res.status(status).send({
       status: "success",
       message: "comments retrieved successfully",
@@ -51,7 +51,7 @@ class CommentController {
       throw new Error("content is required", 400);
     }
 
-    const { comment, status } = CommentModel.getAll(userId, postId, content);
+    const { comment, status } = CommentModel.update(userId, postId, content);
     res.status(status).send({
       status: "success",
       message: "comment updated successfully",
