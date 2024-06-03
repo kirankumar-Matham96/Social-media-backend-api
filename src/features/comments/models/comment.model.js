@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import { CustomErrorHandling } from "../../../middlewares/customErrorHandling.middleware.js";
 
 const comments = [
   {
@@ -38,11 +39,14 @@ class CommentModel {
   static update = (userId, postId, content) => {
     const commentFound = comments.find((comment) => comment.postId === postId);
     if (!commentFound) {
-      throw new Error("post not found", 404);
+      throw new CustomErrorHandling("post not found", 404);
     }
 
     if (commentFound.userId !== userId) {
-      throw new Error("user not allowed to update this comment", 403);
+      throw new CustomErrorHandling(
+        "user not allowed to update this comment",
+        403
+      );
     }
 
     commentFound.content = content;
@@ -55,11 +59,14 @@ class CommentModel {
     );
 
     if (commentIndexFound == -1) {
-      throw new Error("post not found", 404);
+      throw new CustomErrorHandling("post not found", 404);
     }
 
     if (comments[commentIndexFound].userId !== userId) {
-      throw new Error("user not allowed to delete this comment", 403);
+      throw new CustomErrorHandling(
+        "user not allowed to delete this comment",
+        403
+      );
     }
 
     comments.splice(commentIndexFound, 1);

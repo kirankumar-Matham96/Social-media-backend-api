@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import { CustomErrorHandling } from "../../../middlewares/customErrorHandling.middleware.js";
 
 const users = [
   { id: "1", name: "kiran", email: "kiran1@gmail.com", password: "12qsw3e" },
@@ -28,7 +29,7 @@ class UserModel {
   static get = (id) => {
     const userFound = users.find((user) => user.id === id);
     if (!userFound) {
-      throw new Error("user not found", 404);
+      throw new CustomErrorHandling("user not found", 404);
     }
     return { user: userFound, status: 200 };
   };
@@ -36,10 +37,10 @@ class UserModel {
   static confirmLogin = (email, password) => {
     const userFound = users.find((user) => user.email === email);
     if (!userFound) {
-      throw new Error("user not found", 404);
+      throw new CustomErrorHandling("user not found", 404);
     }
     if (userFound.password !== password) {
-      throw new Error("invalid credentials", 400);
+      throw new CustomErrorHandling("invalid credentials", 400);
     }
     return { user: userFound, status: 200 };
   };

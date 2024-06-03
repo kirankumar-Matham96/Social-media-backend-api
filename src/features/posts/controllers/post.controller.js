@@ -1,14 +1,15 @@
 import PostModel from "../models/post.model.js";
+import { CustomErrorHandling } from "../../../middlewares/customErrorHandling.middleware.js";
 
 class PostController {
   createPost = (req, res) => {
     const { caption, image } = req.body;
     const { userId } = req.userId;
     if (!caption) {
-      throw new Error("caption is required", 400);
+      throw new CustomErrorHandling("caption is required", 400);
     }
     if (!image) {
-      throw new Error("image url is required", 400);
+      throw new CustomErrorHandling("image url is required", 400);
     }
 
     const { post, status } = PostModel.add(userId, caption, image);
@@ -29,7 +30,7 @@ class PostController {
   getPostById = (req, res) => {
     const { postId } = req.params;
     if (!postId) {
-      throw new Error("post id required", 400);
+      throw new CustomErrorHandling("post id required", 400);
     }
 
     const { post, status } = PostModel.get(postId);
@@ -56,13 +57,13 @@ class PostController {
     const { caption, imageUrl } = req.body;
 
     if (!caption) {
-      throw new Error("caption is required", 400);
+      throw new CustomErrorHandling("caption is required", 400);
     }
     if (!imageUrl) {
-      throw new Error("image URL is required", 400);
+      throw new CustomErrorHandling("image URL is required", 400);
     }
     if (!postId) {
-      throw new Error("post id is required", 400);
+      throw new CustomErrorHandling("post id is required", 400);
     }
 
     const { post, status } = PostModel.update(
@@ -80,7 +81,7 @@ class PostController {
     const { postId } = req.params;
     const { userId } = req;
     if (!postId) {
-      throw new Error("post id is required");
+      throw new CustomErrorHandling("post id is required");
     }
     const { post, status } = PostModel.delete(postId, userId);
     res

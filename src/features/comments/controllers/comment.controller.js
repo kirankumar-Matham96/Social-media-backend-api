@@ -1,4 +1,5 @@
 import CommentModel from "../models/comment.model.js";
+import { CustomErrorHandling } from "../../../middlewares/customErrorHandling.middleware.js";
 
 class CommentController {
   createNewComment = (req, res) => {
@@ -7,11 +8,11 @@ class CommentController {
     const { content } = req.body;
 
     if (!postId) {
-      throw new Error("post id is required", 400);
+      throw new CustomErrorHandling("post id is required", 400);
     }
 
     if (!content) {
-      throw new Error("content is required", 400);
+      throw new CustomErrorHandling("content is required", 400);
     }
 
     const { comment, status } = CommentModel.add(userId, postId, content);
@@ -27,7 +28,7 @@ class CommentController {
     const { postId } = req.params;
 
     if (!postId) {
-      throw new Error("post id is required", 400);
+      throw new CustomErrorHandling("post id is required", 400);
     }
 
     const { comments, status } = CommentModel.getAll(userId, postId, content);
@@ -44,11 +45,11 @@ class CommentController {
     const { content } = req.body;
 
     if (!postId) {
-      throw new Error("post id is required", 400);
+      throw new CustomErrorHandling("post id is required", 400);
     }
 
     if (!content) {
-      throw new Error("content is required", 400);
+      throw new CustomErrorHandling("content is required", 400);
     }
 
     const { comment, status } = CommentModel.update(userId, postId, content);
@@ -64,7 +65,7 @@ class CommentController {
     const { postId } = req.params;
 
     if (!postId) {
-      throw new Error("post id is required", 400);
+      throw new CustomErrorHandling("post id is required", 400);
     }
 
     const { comment, status } = CommentModel.delete(userId, postId);

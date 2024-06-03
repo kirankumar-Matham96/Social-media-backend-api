@@ -1,4 +1,5 @@
 import LikeModel from "../models/like.model.js";
+import { CustomErrorHandling } from "../../../middlewares/customErrorHandling.middleware.js";
 
 class LikeController {
   likePost = (req, res) => {
@@ -6,7 +7,7 @@ class LikeController {
     const { postId } = req.params;
 
     if (!postId) {
-      throw new Error("post id is required");
+      throw new CustomErrorHandling("post id is required");
     }
 
     const { status } = LikeModel.add(userId, postId);
@@ -20,7 +21,7 @@ class LikeController {
     const { postId } = req.params;
 
     if (!postId) {
-      throw new Error("post id is required");
+      throw new CustomErrorHandling("post id is required");
     }
 
     const { status } = LikeModel.remove(userId, postId);
@@ -34,17 +35,15 @@ class LikeController {
     const { postId } = req.params;
 
     if (!postId) {
-      throw new Error("post id is required");
+      throw new CustomErrorHandling("post id is required");
     }
 
     const { posts, status } = LikeModel.getAllOfPost(userId, postId);
-    res
-      .status(status)
-      .send({
-        status: "success",
-        message: "post disliked successfully",
-        posts,
-      });
+    res.status(status).send({
+      status: "success",
+      message: "post disliked successfully",
+      posts,
+    });
   };
 }
 

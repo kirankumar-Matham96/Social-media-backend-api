@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import { CustomErrorHandling } from "../../../middlewares/customErrorHandling.middleware.js";
 
 const posts = [
   {
@@ -35,7 +36,7 @@ class PostModel {
   static get = (id) => {
     const postFound = posts.find((post) => post.id === id);
     if (!postFound) {
-      throw new Error("post not found", 404);
+      throw new CustomErrorHandling("post not found", 404);
     }
 
     return { post: postFound, status: 200 };
@@ -49,11 +50,11 @@ class PostModel {
   static update = (postId, userId, caption, imageUrl) => {
     const foundPost = posts.find((post) => post.id === postId);
     if (!foundPost) {
-      throw new Error("post not found", 404);
+      throw new CustomErrorHandling("post not found", 404);
     }
 
     if (postFound.userId !== userId) {
-      throw new Error("user not authorized", 403);
+      throw new CustomErrorHandling("user not authorized", 403);
     }
 
     foundPost.caption = caption;
@@ -65,11 +66,11 @@ class PostModel {
   static delete = (postId, userId) => {
     const foundPostIndex = posts.findIndex((post) => post.id === postId);
     if (foundPostIndex == -1) {
-      throw new Error("post not found", 404);
+      throw new CustomErrorHandling("post not found", 404);
     }
 
     if (posts[foundPostIndex].userId !== userId) {
-      throw new Error("user not authorized", 403);
+      throw new CustomErrorHandling("user not authorized", 403);
     }
 
     const postDeleted = posts.splice(foundPostIndex, 1);

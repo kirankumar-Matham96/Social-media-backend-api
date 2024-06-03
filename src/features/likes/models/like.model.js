@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import { CustomErrorHandling } from "../../../middlewares/customErrorHandling.middleware.js";
 
 const likes = [
   {
@@ -37,7 +38,7 @@ class LikeModel {
       (like) => like.userId === userId && like.postId === postId
     );
     if (likeIndexFound == -1) {
-      throw new Error("like not found", 404);
+      throw new CustomErrorHandling("like not found", 404);
     }
 
     likes.splice(likeIndexFound, 1);

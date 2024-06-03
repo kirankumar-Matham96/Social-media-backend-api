@@ -1,4 +1,5 @@
 import UserModel from "../models/user.model.js";
+import { CustomErrorHandling } from "../../../middlewares/customErrorHandling.middleware.js";
 
 class UserController {
   registerUser = (req, res) => {
@@ -6,13 +7,13 @@ class UserController {
     console.log(req.body);
     const { name, email, password } = req.body;
     if (!name) {
-      throw new Error("name is required", 400);
+      throw new CustomErrorHandling("name is required", 400);
     }
     if (!email) {
-      throw new Error("email is required", 400);
+      throw new CustomErrorHandling("email is required", 400);
     }
     if (!password) {
-      throw new Error("password is required", 400);
+      throw new CustomErrorHandling("password is required", 400);
     }
 
     const { user, status } = UserModel.add(name, email, password);
@@ -28,10 +29,10 @@ class UserController {
     const { email, password } = req.body;
 
     if (!email) {
-      throw new Error("email is required", 400);
+      throw new CustomErrorHandling("email is required", 400);
     }
     if (!password) {
-      throw new Error("password is required", 400);
+      throw new CustomErrorHandling("password is required", 400);
     }
 
     const { user, status } = UserModel.confirmLogin(email, password);
