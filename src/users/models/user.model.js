@@ -13,31 +13,34 @@ class UserModel {
     this.password = password;
   }
 
-  static add(name, email, password) {
+  static add = (name, email, password) => {
     const newUser = new UserModel(name, email, password);
     users.push(newUser);
-    return newUser;
-  }
+    return { user: newUser, status: 200 };
+  };
 
-  static getAll() {
-    return users;
-  }
+  static getAll = () => {
+    return { users, status: 200 };
+  };
 
-  static get(id) {
+  static get = (id) => {
     const userFound = users.find((user) => user.id === id);
     if (!userFound) {
       throw new Error("user not found", 404);
     }
-    return userFound;
-  }
+    return { user: userFound, status: 200 };
+  };
 
-  static confirmLogin(id, email, password) {
-    const userFound = users.find((user) => user.id === id);
+  static confirmLogin = (email, password) => {
+    const userFound = users.find((user) => user.email === email);
     if (!userFound) {
       throw new Error("user not found", 404);
     }
-    if (userFound.email === email && userFound.password === password) {
-      return userFound;
+    if (userFound.password !== password) {
+      throw new Error("invalid credentials", 400);
     }
-  }
+    return { user: userFound, status: 200 };
+  };
 }
+
+export default UserModel;
