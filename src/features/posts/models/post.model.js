@@ -3,14 +3,14 @@ import { CustomErrorHandling } from "../../../middlewares/customErrorHandling.mi
 
 const posts = [
   {
-    id: 1,
-    userId: 1,
+    id: "1",
+    userId: "1",
     caption: "First caption",
     imageUrl: "http://sampleurl1.com",
   },
   {
-    id: 2,
-    userId: 2,
+    id: "2",
+    userId: "2",
     caption: "Second caption",
     imageUrl: "http://sampleurl2.com",
   },

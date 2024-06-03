@@ -1,5 +1,7 @@
+import jwt from "jsonwebtoken";
 import UserModel from "../models/user.model.js";
 import { CustomErrorHandling } from "../../../middlewares/customErrorHandling.middleware.js";
+import "dotenv/config";
 
 class UserController {
   registerUser = (req, res) => {
@@ -36,10 +38,17 @@ class UserController {
     }
 
     const { user, status } = UserModel.confirmLogin(email, password);
+    const token = jwt.sign(
+      { id: user.id, email: user.email },
+      process.env.SECRET_CODE,
+      { expiresIn: "1h" }
+    );
+
     res.status(status).send({
       status: "success",
-      message: "user retrieved successfully",
+      message: "user loggedin successfully",
       user: user,
+      token: token,
     });
   };
 }

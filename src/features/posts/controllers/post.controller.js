@@ -4,6 +4,7 @@ import { CustomErrorHandling } from "../../../middlewares/customErrorHandling.mi
 class PostController {
   createPost = (req, res) => {
     const { caption, image } = req.body;
+    console.log("in post create controller => ", { caption, image });
     const { userId } = req.userId;
     if (!caption) {
       throw new CustomErrorHandling("caption is required", 400);
@@ -19,6 +20,7 @@ class PostController {
   };
 
   getAllPosts = (req, res) => {
+    console.log("in Post controller => ", req.userId);
     const { posts, status } = PostModel.getAll();
     res.status(status).send({
       status: "success",
@@ -42,6 +44,7 @@ class PostController {
   };
 
   getUserPosts = (req, res) => {
+    // TODO: is it for admin?
     const { userId } = req.params;
     const { posts, status } = PostModel.getUserPosts(userId);
     res.status(status).send({
