@@ -14,6 +14,8 @@ class UserModel {
   }
 
   static add = (name, email, password) => {
+    console.log("In Model");
+    console.log({ name, email, password });
     const newUser = new UserModel(name, email, password);
     users.push(newUser);
     return { user: newUser, status: 200 };

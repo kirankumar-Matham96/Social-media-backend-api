@@ -1,17 +1,17 @@
-import PostModel from "../models/post.model";
+import PostModel from "../models/post.model.js";
 
 class PostController {
   createPost = (req, res) => {
-    const { caption, imageUrl } = req.body;
+    const { caption, image } = req.body;
     const { userId } = req.userId;
     if (!caption) {
       throw new Error("caption is required", 400);
     }
-    if (!imageUrl) {
+    if (!image) {
       throw new Error("image url is required", 400);
     }
 
-    const { post, status } = PostModel.add(userId, caption, imageUrl);
+    const { post, status } = PostModel.add(userId, caption, image);
     res
       .status(status)
       .send({ status: "success", message: "post created successfully", post });

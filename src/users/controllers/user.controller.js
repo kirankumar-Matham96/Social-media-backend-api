@@ -2,6 +2,8 @@ import UserModel from "../models/user.model.js";
 
 class UserController {
   registerUser = (req, res) => {
+    console.log("In Controller");
+    console.log(req.body);
     const { name, email, password } = req.body;
     if (!name) {
       throw new Error("name is required", 400);

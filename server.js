@@ -6,6 +6,9 @@ import PostRouter from "./src/posts/routes/post.routes.js";
 const PORT = 3000;
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use("/api/user", UserRouter);
 app.use("/api/post", PostRouter);
 
