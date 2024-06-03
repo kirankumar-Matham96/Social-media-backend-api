@@ -31,7 +31,7 @@ class CommentController {
       throw new CustomErrorHandling("post id is required", 400);
     }
 
-    const { comments, status } = CommentModel.getAll(userId, postId, content);
+    const { comments, status } = CommentModel.getAll(userId, postId);
     res.status(status).send({
       status: "success",
       message: "comments retrieved successfully",

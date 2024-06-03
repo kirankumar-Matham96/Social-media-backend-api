@@ -15,8 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/users", UsersRouter);
 app.use("/api/posts", auth, PostsRouter);
-app.use("/api/comments", CommentsRouter);
-app.use("/api/likes", LikesRouter);
+app.use("/api/comments", auth, CommentsRouter);
+app.use("/api/likes", auth, LikesRouter);
 
 app.use(errorHandlingMiddleware);
 

@@ -3,24 +3,23 @@ import { CustomErrorHandling } from "../../../middlewares/customErrorHandling.mi
 
 class PostController {
   createPost = (req, res) => {
-    const { caption, image } = req.body;
-    console.log("in post create controller => ", { caption, image });
+    const { caption } = req.body;
+    const imagePath = req.file.filename;
     const { userId } = req.userId;
     if (!caption) {
       throw new CustomErrorHandling("caption is required", 400);
     }
-    if (!image) {
-      throw new CustomErrorHandling("image url is required", 400);
+    if (!imagePath) {
+      throw new CustomErrorHandling("image is required", 400);
     }
 
-    const { post, status } = PostModel.add(userId, caption, image);
+    const { post, status } = PostModel.add(userId, caption, imagePath);
     res
       .status(status)
       .send({ status: "success", message: "post created successfully", post });
   };
 
   getAllPosts = (req, res) => {
-    console.log("in Post controller => ", req.userId);
     const { posts, status } = PostModel.getAll();
     res.status(status).send({
       status: "success",
@@ -55,14 +54,14 @@ class PostController {
   };
 
   updatePost = (req, res) => {
-    const { postId } = req.params;
     const { userId } = req;
-    const { caption, imageUrl } = req.body;
-
+    const { postId } = req.params;
+    const { caption } = req.body;
+    const imagePath = req.file.filename;
     if (!caption) {
       throw new CustomErrorHandling("caption is required", 400);
     }
-    if (!imageUrl) {
+    if (!imagePath) {
       throw new CustomErrorHandling("image URL is required", 400);
     }
     if (!postId) {
@@ -73,7 +72,7 @@ class PostController {
       postId,
       userId,
       caption,
-      imageUrl
+      imagePath
     );
     res
       .status(status)

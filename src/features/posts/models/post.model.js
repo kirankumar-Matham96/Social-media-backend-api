@@ -53,7 +53,7 @@ class PostModel {
       throw new CustomErrorHandling("post not found", 404);
     }
 
-    if (postFound.userId !== userId) {
+    if (foundPost.userId !== userId) {
       throw new CustomErrorHandling("user not authorized", 403);
     }
 

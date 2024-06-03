@@ -10,10 +10,10 @@ export const errorHandlingMiddleware = (err, req, res, next) => {
     return res.status(err.code).send({ status: "failure", error: err.message });
   }
 
-  return res
-    .status(500)
-    .send({
-      status: "failure",
-      error: "Oops! Something went wrong... Please try later again",
-    });
+  console.log(err);
+
+  return res.status(500).send({
+    status: "failure",
+    error: "Oops! Something went wrong... Please try later again",
+  });
 };

@@ -5,8 +5,6 @@ import "dotenv/config";
 
 class UserController {
   registerUser = (req, res) => {
-    console.log("In Controller");
-    console.log(req.body);
     const { name, email, password } = req.body;
     if (!name) {
       throw new CustomErrorHandling("name is required", 400);

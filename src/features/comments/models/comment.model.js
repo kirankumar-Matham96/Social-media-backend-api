@@ -59,7 +59,7 @@ class CommentModel {
     );
 
     if (commentIndexFound == -1) {
-      throw new CustomErrorHandling("post not found", 404);
+      throw new CustomErrorHandling("comment not found", 404);
     }
 
     if (comments[commentIndexFound].userId !== userId) {
@@ -71,7 +71,7 @@ class CommentModel {
 
     comments.splice(commentIndexFound, 1);
 
-    return { posts: postsFound, status: 200 };
+    return { comment: comments[commentIndexFound], status: 200 };
   };
 }
 
