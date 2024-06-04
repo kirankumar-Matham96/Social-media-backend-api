@@ -18,6 +18,7 @@ router.get("/:id", postController.getPostById);
 router.get("/", postController.getUserPosts);
 router.put("/:id", upload.single("image"), postController.updatePost);
 router.delete("/:id", postController.deletePost);
+router.bookmark("/bookmark/:id", postController.toggleBookmark);
 
 // exporting the express route
 export default router;

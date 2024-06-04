@@ -155,6 +155,13 @@ class PostController {
       .status(status)
       .send({ status: "success", message: "post deleted successfully", post });
   };
+
+  toggleBookmark = (req, res) => {
+    const { id } = req.params;
+    const { posts, message, status } = PostModel.bookmark(id);
+
+    return res.status(status).send({ status: "success", message, posts });
+  };
 }
 
 // exporting the class

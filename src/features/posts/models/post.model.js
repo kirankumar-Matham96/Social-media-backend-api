@@ -20,7 +20,7 @@ const posts = [
 ];
 
 /**
- * This is a post model class, which handles all the posts.
+ * This is a post model class, which handles all the posts
  */
 class PostModel {
   // constructor
@@ -30,10 +30,11 @@ class PostModel {
     this.caption = caption;
     this.imageUrl = imageUrl;
     this.date = new Date().toString();
+    this.isBookmarked = false;
   }
 
   /**
-   * model function to create a new post.
+   * model function to create a new post
    *
    * parameters:
    *   userId: logged in user id
@@ -77,8 +78,8 @@ class PostModel {
   };
 
   /**
-   * model function to retrieve a post by id.
-   * throws error if post not found.
+   * model function to retrieve a post by id
+   * throws error if post not found
    *
    * parameters:
    *   id: post id
@@ -98,7 +99,7 @@ class PostModel {
    * model function to retrieve all the posts related to the loggedin user
    * posts will be sorted by date and returned
    * if the user pass caption query in the request, then the posts will be filtered by caption
-   * 
+   *
    * parameters:
    *   userId: logged in user id
    */
@@ -135,8 +136,8 @@ class PostModel {
   };
 
   /**
-   * model function to update a post by id.
-   * throws error if post not found.
+   * model function to update a post by id
+   * throws error if post not found
    *
    * parameters:
    *   userId: logged in user id
@@ -167,7 +168,7 @@ class PostModel {
   };
 
   /**
-   * model function to delete a post by id.
+   * model function to delete a post by id
    * throws error if post not found.
    *
    * parameters:
@@ -192,6 +193,36 @@ class PostModel {
     const postDeleted = posts.splice(foundPostIndex, 1);
 
     return { post: postDeleted, status: 200 };
+  };
+
+  /**
+   * model function to toggle bookmark a post
+   * throws error if post not found by id
+   *
+   * parameters:
+   *   postId: post id
+   */
+  static bookmark = (postId) => {
+    // finding post
+    const postFound = posts.find((post) => post.postId);
+
+    // if post not found
+    if (!postFound) {
+      throw new Error("post not found", 404);
+    }
+
+    let message = "";
+
+    // toggling bookmark
+    if (postFound.isBookmarked) {
+      postFound.isBookmarked = false;
+      message = "bookmark removed";
+    } else {
+      postFound.isBookmarked = true;
+      message = "bookmark added";
+    }
+
+    return { post: postFound, message, status: 200 };
   };
 }
 
