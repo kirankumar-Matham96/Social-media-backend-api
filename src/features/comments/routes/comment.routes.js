@@ -3,6 +3,7 @@ import express from "express";
 
 // module import
 import CommentController from "../controllers/comment.controller.js";
+import { ValidationMiddleware } from "../../../middlewares/validation.middleware.js";
 
 // initializing express router
 const router = express.Router();
@@ -11,9 +12,17 @@ const router = express.Router();
 const commentController = new CommentController();
 
 // comment routes
-router.post("/:id", commentController.createNewComment);
+router.post(
+  "/:id",
+  ValidationMiddleware.commentsValidation,
+  commentController.createNewComment
+);
 router.get("/:id", commentController.getAllCommentsRelatedToAPost);
-router.put("/:id", commentController.updateComment);
+router.put(
+  "/:id",
+  ValidationMiddleware.commentsValidation,
+  commentController.updateComment
+);
 router.delete("/:id", commentController.deleteComment);
 
 // exporting express router
