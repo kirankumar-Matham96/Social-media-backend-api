@@ -51,14 +51,21 @@ class CommentModel {
    * model function to get all the comments related to a post.
    *
    * parameters:
-   *   id: post id.
+   *   postId: post id
+   *   offset: to skip the comments
+   *   limit: to set limit to comments
+   *   commentsToPaginate: list of comments to apply pagination on
    */
-  static getAll = (postId) => {
+  static getAll = (postId, offset = "0", limit = "10") => {
     // filtering the comments related to specific post
     const commentsFound = comments.filter(
       (comment) => comment.postId === postId
     );
-    return { comments: commentsFound, status: 200 };
+
+    return {
+      comments: this.pagination(offset, limit, commentsFound),
+      status: 200,
+    };
   };
 
   /**
@@ -125,6 +132,18 @@ class CommentModel {
     comments.splice(commentIndexFound, 1);
 
     return { comment: comments[commentIndexFound], status: 200 };
+  };
+
+  /**
+   * model function to apply pagination
+   *
+   * parameters:
+   *   offset: to skip the posts
+   *   limit: to set limit to posts
+   *   commentsToPaginate: list of comments to apply pagination on
+   */
+  static pagination = (offset, limit, commentsToPaginate = comments) => {
+    return commentsToPaginate.slice(offset, offset + limit);
   };
 }
 

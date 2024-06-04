@@ -49,11 +49,13 @@ class CommentController {
    * parameters:
    *   userId: logged in user id extracted from request.
    *   id: post id extracted from request params.
+   *   offset: to skip the comments
+   *   limit: to set limit to comments
    */
   getAllCommentsRelatedToAPost = (req, res) => {
     // extracting the data from the request
-    const { userId } = req;
     const { id } = req.params;
+    const { offset, limit } = req.query;
 
     // if post id is not passed
     if (!id) {
@@ -61,7 +63,7 @@ class CommentController {
     }
 
     // passing the details to model function
-    const { comments, status } = CommentModel.getAll(userId, id);
+    const { comments, status } = CommentModel.getAll(id, offset, limit);
 
     // sending response
     res.status(status).send({
