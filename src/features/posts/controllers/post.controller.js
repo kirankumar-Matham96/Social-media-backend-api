@@ -38,13 +38,14 @@ class PostController {
   /**
    * controller function to retrieve all posts
    * filters the posts by caption if passed in the query
+   * can change pagination settings by passing offset and limit query params
    */
   getAllPosts = (req, res) => {
     // extracting caption from the request query
-    const { caption } = req.query;
+    const { caption, offset, limit } = req.query;
 
     // passing the details to model function
-    const { posts, status } = PostModel.getAll(caption);
+    const { posts, status } = PostModel.getAll(caption, offset, limit);
 
     // sending response
     res.status(status).send({
@@ -81,14 +82,20 @@ class PostController {
   /**
    * controller function to retrieve user specific posts
    * filters the posts by caption if passed in the query
+   * can change pagination settings by passing offset and limit query params
    */
   getUserPosts = (req, res) => {
     // extracting the data from the request
     const { userId } = req.params;
-    const { caption } = req.query;
+    const { caption, offset, limit } = req.query;
 
     // passing the details to model function
-    const { posts, status } = PostModel.getUserPosts(userId, caption);
+    const { posts, status } = PostModel.getUserPosts(
+      userId,
+      caption,
+      offset,
+      limit
+    );
 
     // sending response
     res.status(status).send({
@@ -156,6 +163,9 @@ class PostController {
       .send({ status: "success", message: "post deleted successfully", post });
   };
 
+  /**
+   * controller function to toggle bookmark a post.
+   */
   toggleBookmark = (req, res) => {
     const { id } = req.params;
     const { posts, message, status } = PostModel.bookmark(id);

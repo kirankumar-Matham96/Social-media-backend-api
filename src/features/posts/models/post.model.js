@@ -51,8 +51,15 @@ class PostModel {
    * model function to retrieve all posts
    * posts will be sorted by date and returned
    * if the user pass caption query in the request, then the posts will be filtered by caption
+   * paginated by sending 10 results by default initially
+   * pagination can be used by sending "offset" and "limit" query params
+   *
+   * parameters:
+   *   caption: caption to filter posts
+   *   offset: to skip the posts
+   *   limit: to set limit to posts
    */
-  static getAll = (caption = "") => {
+  static getAll = (caption = "", offset = "0", limit = "10") => {
     if (caption) {
       // filtering the post with caption if passed
       const filteredPosts = posts.filter((post) =>
@@ -63,8 +70,10 @@ class PostModel {
       const sortedAndFilteredPosts = filteredPosts.sort((post1, post2) => {
         return new Date(post2.date) - new Date(post1.date);
       });
+
       return {
-        posts: sortedAndFilteredPosts,
+        // returning after pagination
+        posts: this.pagination(offset, limit, sortedAndFilteredPosts),
         status: 200,
       };
     }
@@ -74,7 +83,8 @@ class PostModel {
       return new Date(post2.date) - new Date(post1.date);
     });
 
-    return { posts: sortedPosts, status: 200 };
+    // returning after pagination
+    return { posts: this.pagination(offset, limit, sortedPosts), status: 200 };
   };
 
   /**
@@ -99,11 +109,16 @@ class PostModel {
    * model function to retrieve all the posts related to the loggedin user
    * posts will be sorted by date and returned
    * if the user pass caption query in the request, then the posts will be filtered by caption
+   * paginated by sending 10 results by default initially
+   * pagination can be used by sending "offset" and "limit" query params
    *
    * parameters:
    *   userId: logged in user id
+   *   caption: caption to filter posts
+   *   offset: to skip the posts
+   *   limit: to set limit to posts
    */
-  static getUserPosts = (userId, caption = "") => {
+  static getUserPosts = (userId, caption = "", offset = "0", limit = "10") => {
     // filtering the user posts
     const userPosts = posts.filter((post) => {
       return post.userId === userId;
@@ -122,7 +137,8 @@ class PostModel {
       });
 
       return {
-        posts: sortedAndFilteredPosts,
+        // returning after adding pagination
+        posts: this.pagination(offset, limit, sortedAndFilteredPosts),
         status: 200,
       };
     }
@@ -132,7 +148,8 @@ class PostModel {
       return new Date(post2.date) - new Date(post1.date);
     });
 
-    return { posts: sortedPosts, status: 200 };
+    // returning after adding pagination
+    return { posts: this.pagination(offset, limit, sortedPosts), status: 200 };
   };
 
   /**
@@ -142,8 +159,8 @@ class PostModel {
    * parameters:
    *   userId: logged in user id
    *   postId: post id
-   *   caption: post caption
    *   imageUrl: post image
+   *   caption: post caption
    */
   static update = (postId, userId, caption, imageUrl) => {
     // finding the post
@@ -223,6 +240,18 @@ class PostModel {
     }
 
     return { post: postFound, message, status: 200 };
+  };
+
+  /**
+   * model function to apply pagination
+   *
+   * parameters:
+   *   offset: to skip the posts
+   *   limit: to set limit to posts
+   *   postsToPaginate: list of post to apply pagination on
+   */
+  static pagination = (offset, limit, postsToPaginate = posts) => {
+    return postsToPaginate.slice(offset, offset + limit);
   };
 }
 
