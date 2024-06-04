@@ -1,6 +1,7 @@
+// package imports
 import { v4 as uuidv4 } from "uuid";
-import { CustomErrorHandling } from "../../../middlewares/customErrorHandling.middleware.js";
 
+// likes list
 const likes = [
   {
     id: "like_1",
@@ -14,42 +15,55 @@ const likes = [
   },
 ];
 
+/**
+ * This is a likes model class, which handles all the likes.
+ */
 class LikeModel {
+  // constructor
   constructor(userId, postId) {
     this.id = uuidv4();
     this.userId = userId;
     this.postId = postId;
   }
 
-  static add(userId, postId) {
-    const likedAlready = likes.find(
+  /**
+   * model function to toggle like of a post.
+   *
+   * parameters:
+   *   userId: logged in user id
+   *   postId: post id
+   */
+  static toggle = (userId, postId) => {
+    //  finding index of like
+    const likedIndex = likes.findIndex(
       (like) => like.userId === userId && like.postId === postId
     );
-    if (!likedAlready) {
+
+    if (likedIndex == -1) {
+      // if index not found, creating a new like model
       const newLike = new LikeModel(userId, postId);
       likes.push(newLike);
+    } else {
+      // if index found, removing the like
+      likes.splice(likedIndex, 1);
     }
-
     return { status: 200 };
-  }
+  };
 
-  static remove(userId, postId) {
-    const likeIndexFound = likes.findIndex(
+  /**
+   * model function to retrieve all the likes.
+   *
+   * parameters:
+   *   userId: logged in user id
+   *   postId: post id
+   */
+  static getAllOfPost = (userId, postId) => {
+    // filtering the like of a specific post
+    const posts = likes.filter(
       (like) => like.userId === userId && like.postId === postId
     );
-    if (likeIndexFound == -1) {
-      throw new CustomErrorHandling("like not found", 404);
-    }
-
-    likes.splice(likeIndexFound, 1);
-
-    return { status: 200 };
-  }
-
-  static getAllOfPost = (userId, postId) => {
-    const posts = likes.filter(like=> like.userId === userId && like.postId === postId);  
-    return {posts, status: 200};  
-  }
+    return { posts, status: 200 };
+  };
 }
 
 export default LikeModel;

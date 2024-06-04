@@ -1,44 +1,60 @@
+// module imports
 import LikeModel from "../models/like.model.js";
 import { CustomErrorHandling } from "../../../middlewares/customErrorHandling.middleware.js";
 
+/**
+ * This class contains the functionalities to retrieve all posts and toggle like of a post.
+ */
 class LikeController {
-  likePost = (req, res) => {
+  /**
+   * controller function to toggle like of a post.
+   * throws error if any parameter is missing.
+   *
+   * parameters:
+   *   userId: logged in user id extracted from request.
+   *   id: post id extracted from request params.
+   */
+  toggleLike = (req, res) => {
+     // extracting the data from the request
     const { userId } = req;
-    const { postId } = req.params;
+    const { id } = req.params;
 
-    if (!postId) {
+    // if post id is not passed
+    if (!id) {
       throw new CustomErrorHandling("post id is required");
     }
-
-    const { status } = LikeModel.add(userId, postId);
+    
+    // passing the details to model function
+    const { status } = LikeModel.toggle(userId, id);
+   
+    // sending response
     res
       .status(status)
       .send({ status: "success", message: "post liked successfully" });
   };
 
-  disLikePost = (req, res) => {
-    const { userId } = req;
-    const { postId } = req.params;
-
-    if (!postId) {
-      throw new CustomErrorHandling("post id is required");
-    }
-
-    const { status } = LikeModel.remove(userId, postId);
-    res
-      .status(status)
-      .send({ status: "success", message: "post disliked successfully" });
-  };
-
+  /**
+   * controller function to retrieve all likes of a post.
+   * throws error if any parameter is missing.
+   *
+   * parameters:
+   *   userId: logged in user id extracted from request.
+   *   id: post id extracted from request params.
+   */
   getAllLikesOfAPost = (req, res) => {
+     // extracting the data from the request
     const { userId } = req;
-    const { postId } = req.params;
+    const { id } = req.params;
 
-    if (!postId) {
+     // if post id is not passed
+    if (!id) {
       throw new CustomErrorHandling("post id is required");
     }
 
-    const { posts, status } = LikeModel.getAllOfPost(userId, postId);
+     // passing the details to model function
+    const { posts, status } = LikeModel.getAllOfPost(userId, id);
+    
+     // sending response
     res.status(status).send({
       status: "success",
       message: "post disliked successfully",
@@ -47,4 +63,5 @@ class LikeController {
   };
 }
 
+// exporting the class
 export default LikeController;
