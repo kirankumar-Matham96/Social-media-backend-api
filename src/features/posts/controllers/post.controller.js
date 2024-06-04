@@ -36,11 +36,15 @@ class PostController {
   };
 
   /**
-   * controller function to retrieve all posts.
+   * controller function to retrieve all posts
+   * filters the posts by caption if passed in the query
    */
   getAllPosts = (req, res) => {
+    // extracting caption from the request query
+    const { caption } = req.query;
+
     // passing the details to model function
-    const { posts, status } = PostModel.getAll();
+    const { posts, status } = PostModel.getAll(caption);
 
     // sending response
     res.status(status).send({
@@ -75,14 +79,16 @@ class PostController {
   };
 
   /**
-   * controller function to retrieve user specific posts.
+   * controller function to retrieve user specific posts
+   * filters the posts by caption if passed in the query
    */
   getUserPosts = (req, res) => {
     // extracting the data from the request
     const { userId } = req.params;
+    const { caption } = req.query;
 
     // passing the details to model function
-    const { posts, status } = PostModel.getUserPosts(userId);
+    const { posts, status } = PostModel.getUserPosts(userId, caption);
 
     // sending response
     res.status(status).send({

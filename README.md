@@ -127,8 +127,10 @@ A Node.js application to create, update, delete posts, comments and likes. Build
 
 - `POST /api/posts/`: Create a new post
 - `GET /api/posts/all`: Get all posts
+- `GET /api/posts/all?caption=<CAPTION_TO_FILTER_POSTS>`: Get all posts with filtering by caption
 - `GET /api/posts/<POST_ID>`: Get a specific post by ID
-- `GET /api/posts/`: Filter posts by user
+- `GET /api/posts/`: Get all posts of a user
+- `GET /api/posts?caption=<CAPTION_TO_FILTER_POSTS>`: Get all posts of a user posts filtering by caption
 - `PUT /api/posts/<POST_ID>`: Update post by ID
 - `DELETE /api/posts/<POST_ID>`: Delete post by ID
 

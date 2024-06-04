@@ -46,9 +46,18 @@ class PostModel {
   };
 
   /**
-   * model function to retrieve all posts.
+   * model function to retrieve all posts
+   * filters the posts with caption if passed the query
    */
-  static getAll = () => {
+  static getAll = (caption = "") => {
+    // filtering the post with caption if passed
+    if (caption) {
+      return {
+        posts: posts.filter((post) => post.caption.includes(caption)),
+        status: 200,
+      };
+    }
+
     return { posts, status: 200 };
   };
 
@@ -76,9 +85,20 @@ class PostModel {
    * parameters:
    *   userId: logged in user id
    */
-  static getUserPosts = (userId) => {
+  static getUserPosts = (userId, caption = "") => {
     // filtering the user posts
-    const userPosts = posts.filter((post) => post.userId === userId);
+    const userPosts = posts.filter((post) => {
+      return post.userId === userId;
+    });
+
+    // filtering the post with caption if passed in the query
+    if (caption) {
+      return {
+        posts: userPosts.filter((post) => post.caption.includes(caption)),
+        status: 200,
+      };
+    }
+
     return { posts: userPosts, status: 200 };
   };
 
