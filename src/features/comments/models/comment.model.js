@@ -138,8 +138,8 @@ class CommentModel {
    * model function to apply pagination
    *
    * parameters:
-   *   offset: to skip the posts
-   *   limit: to set limit to posts
+   *   offset: to skip the comments
+   *   limit: to set limit to comments
    *   commentsToPaginate: list of comments to apply pagination on
    */
   static pagination = (offset, limit, commentsToPaginate = comments) => {

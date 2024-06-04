@@ -17,9 +17,16 @@ A Node.js application to create, update, delete posts, comments and likes. Build
 
 - User registration and login
 - Create, update, retrieve by id, filter by user, and all retrieve posts
-- While retrieving the posts, user can send a query "caption" to filter the posts by post caption
+- Sort by Date feature is added for posts
+- Can bookmark a post
+- While retrieving the posts:
+  - user can send a query "caption" to filter the posts by post caption
+  - user can send a query "limit"(default value = 0) and "offset"(default value = 10) to change pagination settings
 - Add, update and retrieve by id, retrieve by post id, and retrieve all the comments
+- While retrieving the comments:
+  - user can send a query "limit"(default value = 0) and "offset"(default value = 10) to change pagination settings
 - Like and dislike the post
+- Pagination is added for posts and comments
 
 ## Prerequisites
 
@@ -129,9 +136,13 @@ A Node.js application to create, update, delete posts, comments and likes. Build
 - `POST /api/posts/`: Create a new post
 - `GET /api/posts/all`: Get all posts
 - `GET /api/posts/all?caption=<CAPTION_TO_FILTER_POSTS>`: Get all posts with filtering by caption
+- `GET /api/posts/all?offset=<POSTS_TO_SKIP>&limit=<MAX_POSTS>`: Change pagination while retrieving the posts
+- `GET /api/posts/all?caption=<CAPTION_TO_FILTER_POSTS>&offset=<POSTS_TO_SKIP>&limit=<MAX_POSTS>`: Change pagination while retrieving the posts filtered by caption
 - `GET /api/posts/<POST_ID>`: Get a specific post by ID
 - `GET /api/posts/`: Get all posts of a user
 - `GET /api/posts?caption=<CAPTION_TO_FILTER_POSTS>`: Get all posts of a user posts filtering by caption
+- `GET /api/posts?offset=<POSTS_TO_SKIP>&limit=<MAX_POSTS>`: Change pagination while retrieving the user posts
+- `GET /api/posts?caption=<CAPTION_TO_FILTER_POSTS>&offset=<POSTS_TO_SKIP>&limit=<MAX_POSTS>`: Change pagination while retrieving the user posts filtering by caption
 - `PUT /api/posts/<POST_ID>`: Update post by ID
 - `DELETE /api/posts/<POST_ID>`: Delete post by ID
 
