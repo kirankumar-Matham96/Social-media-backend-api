@@ -17,6 +17,7 @@ A Node.js application to create, update, delete posts, comments and likes. Build
 
 - User registration and login
 - Create, update, retrieve by id, filter by user, and all retrieve posts
+- While retrieving the posts, user can send a query "caption" to filter the posts by post caption
 - Add, update and retrieve by id, retrieve by post id, and retrieve all the comments
 - Like and dislike the post
 

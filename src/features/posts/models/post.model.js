@@ -29,6 +29,7 @@ class PostModel {
     this.userId = userId;
     this.caption = caption;
     this.imageUrl = imageUrl;
+    this.date = new Date().toString();
   }
 
   /**
@@ -47,18 +48,32 @@ class PostModel {
 
   /**
    * model function to retrieve all posts
-   * filters the posts with caption if passed the query
+   * posts will be sorted by date and returned
+   * if the user pass caption query in the request, then the posts will be filtered by caption
    */
   static getAll = (caption = "") => {
-    // filtering the post with caption if passed
     if (caption) {
+      // filtering the post with caption if passed
+      const filteredPosts = posts.filter((post) =>
+        post.caption.includes(caption)
+      );
+
+      // sorting posts by date
+      const sortedAndFilteredPosts = filteredPosts.sort((post1, post2) => {
+        return new Date(post2.date) - new Date(post1.date);
+      });
       return {
-        posts: posts.filter((post) => post.caption.includes(caption)),
+        posts: sortedAndFilteredPosts,
         status: 200,
       };
     }
 
-    return { posts, status: 200 };
+    // sorting posts by date
+    const sortedPosts = posts.sort((post1, post2) => {
+      return new Date(post2.date) - new Date(post1.date);
+    });
+
+    return { posts: sortedPosts, status: 200 };
   };
 
   /**
@@ -80,8 +95,10 @@ class PostModel {
   };
 
   /**
-   * model function to retrieve all the posts related to the loggedin user.
-   *
+   * model function to retrieve all the posts related to the loggedin user
+   * posts will be sorted by date and returned
+   * if the user pass caption query in the request, then the posts will be filtered by caption
+   * 
    * parameters:
    *   userId: logged in user id
    */
@@ -93,13 +110,28 @@ class PostModel {
 
     // filtering the post with caption if passed in the query
     if (caption) {
+      // filtering the post with caption if passed
+      const filteredPosts = userPosts.filter((post) =>
+        post.caption.includes(caption)
+      );
+
+      // sorting posts by date
+      const sortedAndFilteredPosts = filteredPosts.sort((post1, post2) => {
+        return new Date(post2.date) - new Date(post1.date);
+      });
+
       return {
-        posts: userPosts.filter((post) => post.caption.includes(caption)),
+        posts: sortedAndFilteredPosts,
         status: 200,
       };
     }
 
-    return { posts: userPosts, status: 200 };
+    // sorting posts by date
+    const sortedPosts = userPosts.sort((post1, post2) => {
+      return new Date(post2.date) - new Date(post1.date);
+    });
+
+    return { posts: sortedPosts, status: 200 };
   };
 
   /**
@@ -129,6 +161,7 @@ class PostModel {
     // updating the post details
     foundPost.caption = caption;
     foundPost.imageUrl = imageUrl;
+    foundPost.date = new Date().toString();
 
     return { post: foundPost, status: 200 };
   };
