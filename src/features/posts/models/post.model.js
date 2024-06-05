@@ -140,7 +140,7 @@ class PostModel {
     if (caption) {
       // filtering the post with caption if passed
       const filteredPosts = posts.filter((post) =>
-        post.caption.includes(caption)
+        post.caption.toLowerCase().includes(caption.toLowerCase())
       );
 
       // sorting posts by date
@@ -205,7 +205,7 @@ class PostModel {
     if (caption) {
       // filtering the post with caption if passed
       const filteredPosts = userPosts.filter((post) =>
-        post.caption.includes(caption)
+        post.caption.toLowerCase().includes(caption.toLowerCase())
       );
 
       // sorting posts by date
