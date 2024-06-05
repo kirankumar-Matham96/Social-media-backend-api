@@ -1,4 +1,4 @@
-# Social Media App (NODE-API)
+# Social Media App (NODE-REST-API)
 
 A Node.js application to create, update, delete posts, comments and likes. Build using REST Full API with user authorization feature.
 
