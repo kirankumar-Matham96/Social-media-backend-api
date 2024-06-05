@@ -328,6 +328,15 @@ class PostModel {
    *   postsToPaginate: list of post to apply pagination on
    */
   static pagination = (offset, limit, postsToPaginate = posts) => {
+    // converting into integers
+    offset = parseInt(offset);
+    limit = parseInt(limit);
+
+    // adjusting the values for list indices
+    if (offset > 0) {
+      offset--;
+    }
+
     return postsToPaginate.slice(offset, offset + limit);
   };
 }

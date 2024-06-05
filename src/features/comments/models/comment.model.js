@@ -203,6 +203,15 @@ class CommentModel {
    *   commentsToPaginate: list of comments to apply pagination on
    */
   static pagination = (offset, limit, commentsToPaginate = comments) => {
+    // converting into integers
+    offset = parseInt(offset);
+    limit = parseInt(limit);
+
+    // adjusting the values for list indices
+    if (offset > 0) {
+      offset--;
+    }
+
     return commentsToPaginate.slice(offset, offset + limit);
   };
 }
