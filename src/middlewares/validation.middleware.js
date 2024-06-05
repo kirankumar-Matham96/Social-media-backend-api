@@ -1,6 +1,9 @@
 // package import
 import { body, validationResult } from "express-validator";
 
+// module imports
+import { CustomErrorHandling } from "./customErrorHandling.middleware.js";
+
 /**
  * This middleware handles all the validations
  */
@@ -78,6 +81,24 @@ export class ValidationMiddleware {
       await body("caption")
         .notEmpty()
         .withMessage("caption is required")
+        .run(req);
+
+      await body("image")
+        .custom((value, { req }) => {
+          if (!req.file) {
+            throw new CustomErrorHandling("image required");
+          }
+          if (
+            req.file.mimetype !== "image/jpg" &&
+            req.file.mimetype !== "image/png" &&
+            req.file.mimetype !== "image/jpeg"
+          ) {
+            throw new CustomErrorHandling(
+              "Only jpg/jpeg/png files are accepted"
+            );
+          }
+          return ".jpg";
+        })
         .run(req);
 
       const validationResults = validationResult(req);
