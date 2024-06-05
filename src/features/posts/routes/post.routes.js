@@ -37,6 +37,6 @@ router.put(
 );
 router.delete("/:id", postController.deletePost);
 router.put("/bookmark/:id", postController.toggleBookmark);
-
+router.post("/archive/:id", PostHelper.archivePost);
 // exporting the express route
 export default router;

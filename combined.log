@@ -18,3 +18,14 @@
 {"level":"info","message":"Wed Jun 05 2024 05:59:57 GMT+0530 (India Standard Time) - Req URL: /api/posts/draft - Req Body: {}\n","service":"Request - Logging"}
 {"level":"info","message":"Wed Jun 05 2024 06:02:11 GMT+0530 (India Standard Time) - Req URL: /api/posts/draft - Req Body: {}\n","service":"Request - Logging"}
 {"level":"info","message":"Wed Jun 05 2024 06:02:24 GMT+0530 (India Standard Time) - Req URL: /api/posts/draft - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 06:10:24 GMT+0530 (India Standard Time) - Req URL: /api/posts/ - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 06:10:42 GMT+0530 (India Standard Time) - Req URL: /api/posts/ - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 06:11:00 GMT+0530 (India Standard Time) - Req URL: /api/posts/all - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 06:11:52 GMT+0530 (India Standard Time) - Req URL: /api/posts/archive/1 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 06:12:06 GMT+0530 (India Standard Time) - Req URL: /api/posts/archive/1 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 06:12:39 GMT+0530 (India Standard Time) - Req URL: /api/posts/archive/1 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 06:14:05 GMT+0530 (India Standard Time) - Req URL: /api/posts/archive/1 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 06:30:11 GMT+0530 (India Standard Time) - Req URL: /api/posts/archive/1 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 06:32:34 GMT+0530 (India Standard Time) - Req URL: /api/posts/archive/1 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 06:33:32 GMT+0530 (India Standard Time) - Req URL: /api/posts/archive/1 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 06:39:24 GMT+0530 (India Standard Time) - Req URL: /api/posts/archive/1 - Req Body: {}\n","service":"Request - Logging"}

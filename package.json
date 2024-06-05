@@ -17,6 +17,7 @@
   "author": "Kirankumar Matham",
   "license": "ISC",
   "dependencies": {
+    "archiver": "^7.0.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-validator": "^7.1.0",
