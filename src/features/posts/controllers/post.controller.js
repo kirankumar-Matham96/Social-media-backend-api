@@ -86,7 +86,7 @@ class PostController {
    */
   getUserPosts = (req, res) => {
     // extracting the data from the request
-    const { userId } = req.params;
+    const { userId } = req;
     const { caption, offset, limit } = req.query;
 
     // passing the details to model function
