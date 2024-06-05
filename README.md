@@ -16,6 +16,7 @@ A Node.js application to create, update, delete posts, comments and likes. Build
 ## Features
 
 - User registration and login
+- input validations are handled
 - Create, update, retrieve by id, filter by user, and all retrieve posts
 - Sort by Date feature is added for posts
 - Can bookmark a post
@@ -145,6 +146,7 @@ A Node.js application to create, update, delete posts, comments and likes. Build
 - `GET /api/posts?caption=<CAPTION_TO_FILTER_POSTS>&offset=<POSTS_TO_SKIP>&limit=<MAX_POSTS>`: Change pagination while retrieving the user posts filtering by caption
 - `PUT /api/posts/<POST_ID>`: Update post by ID
 - `DELETE /api/posts/<POST_ID>`: Delete post by ID
+- `PUT /api/posts/bookmark/<POST_ID>`: Toggle bookmark a post
 
 ### Comment Routes
 
@@ -163,6 +165,7 @@ A Node.js application to create, update, delete posts, comments and likes. Build
 - Node.js
 - Express
 - Multer (for file handling)
+- express-validator (for handling validations)
 - jsonwebtoken (for auth)
 - winston (for logs)
 - express-validator (for validation)

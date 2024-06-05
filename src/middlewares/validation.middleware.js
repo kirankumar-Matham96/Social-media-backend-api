@@ -8,7 +8,7 @@ export class ValidationMiddleware {
   /**
    * validates user signup data
    */
-  static userSignUpValidation = async (req, res, next) => {
+  static userSignUpValidation = async (req, res, next) => { 
     try {
       await body("name").notEmpty().withMessage("name is required").run(req);
       await body("email")
@@ -22,7 +22,6 @@ export class ValidationMiddleware {
         .run(req);
 
       const validationResults = validationResult(req);
-      console.log(validationResults.array()[0].msg);
 
       if (validationResults.array().length > 0) {
         throw new Error(validationResults.array()[0].msg, 400);
@@ -49,7 +48,6 @@ export class ValidationMiddleware {
         .run(req);
 
       const validationResults = validationResult(req);
-      console.log(validationResults.array()[0].msg);
 
       if (validationResults.array().length > 0) {
         throw new Error(validationResults.array()[0].msg, 400);
@@ -71,8 +69,7 @@ export class ValidationMiddleware {
         .run(req);
 
       const validationResults = validationResult(req);
-      console.log(validationResults.array()[0].msg);
-
+      
       if (validationResults.array().length > 0) {
         throw new Error(validationResults.array()[0].msg, 400);
       }
@@ -93,7 +90,6 @@ export class ValidationMiddleware {
         .run(req);
 
       const validationResults = validationResult(req);
-      console.log(validationResults.array()[0].msg);
 
       if (validationResults.array().length > 0) {
         throw new Error(validationResults.array()[0].msg, 400);
