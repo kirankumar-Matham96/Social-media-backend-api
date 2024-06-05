@@ -44,6 +44,7 @@ class PostModel {
   static add = (userId, caption, imageUrl) => {
     // creating a new post
     const newPost = new PostModel(userId, caption, imageUrl);
+    posts.push(newPost);
     return { post: newPost, status: 200 };
   };
 

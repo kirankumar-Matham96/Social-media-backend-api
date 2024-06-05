@@ -165,8 +165,8 @@ A Node.js application to create, update, delete posts, comments and likes. Build
 
 ### Like Routes
 
-- `GET /api/comments/<POST_ID>`: Get all likes of a post
-- `GET /api/comments/toggle/<POST_ID>`: Like or dislike a post
+- `GET /api/likes/<POST_ID>`: Get all likes of a post
+- `GET /api/likes/toggle/<POST_ID>`: Like or dislike a post
 
 ## Technologies Used
 
