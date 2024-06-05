@@ -298,7 +298,7 @@ class PostModel {
    */
   static bookmark = (postId) => {
     // finding post
-    const postFound = posts.find((post) => post.postId);
+    const postFound = posts.find((post) => post.id === postId);
 
     // if post not found
     if (!postFound) {
