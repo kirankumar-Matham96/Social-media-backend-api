@@ -169,10 +169,10 @@ class CommentModel {
    *   userId: user id.
    *   id: post id.
    */
-  static delete = (userId, postId) => {
+  static delete = (userId, commentId) => {
     // finding the comment index
     const commentIndexFound = comments.findIndex(
-      (comment) => comment.postId === postId
+      (comment) => comment.id === commentId
     );
 
     // if the comment not found
@@ -189,9 +189,9 @@ class CommentModel {
     }
 
     // removing the comment from the list
-    comments.splice(commentIndexFound, 1);
+    const deletedComment = comments.splice(commentIndexFound, 1);
 
-    return { comment: comments[commentIndexFound], status: 200 };
+    return { comment: deletedComment, status: 200 };
   };
 
   /**
