@@ -20,6 +20,8 @@ A Node.js application to create, update, delete posts, comments and likes. Build
 - Create, update, retrieve by id, filter by user, and all retrieve posts
 - Sort by Date feature is added for posts
 - Can bookmark a post
+- Can save post as a draft
+- Can archive a post
 - While retrieving the posts:
   - user can send a query "caption" to filter the posts by post caption
   - user can send a query "limit"(default value = 0) and "offset"(default value = 10) to change pagination settings
@@ -75,6 +77,8 @@ A Node.js application to create, update, delete posts, comments and likes. Build
 
 ```
 ├── src/
+│ ├── archives/
+│ ├── drafts/
 │ ├── features/
 | | ├── comments/
 │ │ │ ├── controllers/
@@ -104,6 +108,8 @@ A Node.js application to create, update, delete posts, comments and likes. Build
 │ │   | └── user.model.js
 │ │   └── routes/
 │ │     └── user.routes.js
+│ ├── helpers/
+| | └── post.helper.js
 │ ├── media/
 │ └── middlewares/
 │   └── customErrorHandling.middleware.js
@@ -147,6 +153,8 @@ A Node.js application to create, update, delete posts, comments and likes. Build
 - `PUT /api/posts/<POST_ID>`: Update post by ID
 - `DELETE /api/posts/<POST_ID>`: Delete post by ID
 - `PUT /api/posts/bookmark/<POST_ID>`: Toggle bookmark a post
+- `POST /api/posts/draft/<POST_ID>`: save a post as draft (\*.txt)
+- `POST /api/posts/archive/<POST_ID>`: save a post as zip (\*.zip)
 
 ### Comment Routes
 
@@ -164,12 +172,14 @@ A Node.js application to create, update, delete posts, comments and likes. Build
 
 - Node.js
 - Express
+- jsonwebtoken (for auth)
 - Multer (for file handling)
 - express-validator (for handling validations)
-- jsonwebtoken (for auth)
 - winston (for logs)
-- express-validator (for validation)
+- archiver (to archive posts)
 - uuid (for unique id generation)
+- fs (for handling files)
+- path (for handling file paths)
 
 ## Contributing
 
