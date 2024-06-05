@@ -1,0 +1,65 @@
+/* installing git with command line */
+// mac: brew install git
+// linux: sudo apt-get install git
+// windows: download installer and install
+
+/* To use the git in a folder */
+git init
+
+/* to see the items in the folder */
+ls
+ls -a
+ls -l
+ls -al
+...
+
+/* to add the git account to the local git */
+//we need to add some details before
+git config user.name '<user name>'
+git config user.email '<user email>'
+
+/* to add the remote to the local */
+git remote add origin "repository link"
+
+/* to add the files to the git */
+git add <file or folder name>
+
+note: we an use * to add everything
+
+/* to commit changes to the git */
+git commit -m "message"
+
+/* to check the status of the git */
+git status
+
+/* to push the data to the remote git */
+got push origin <branch name>
+
+
+/* to see the entries or logs of the commits */
+git log
+
+/* to role back */
+git log // which will give all the commits with commit ids
+git checkout <commit id> // take the id from the git log
+
+/* to see the available branches */
+git branch
+
+/* to create a new branch */
+git checkout -b <branch name> // it will create a branch and switches to it
+
+/* to move to the different branch */
+git checkout <branch name>
+
+/* to merge the branches */
+git merge <branch to merge>
+
+Note: Let us say we are in master branch. We want to merge other branch(develop)
+      to the master branch. Then we can use the command "git merge develop".
+
+/* resolving conflicts */
+clear what you don't need and keep that you want. then add everything to the branch.
+
+
+

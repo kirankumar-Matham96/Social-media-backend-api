@@ -135,3 +135,49 @@
 {"level":"info","message":"Wed Jun 05 2024 10:17:10 GMT+0530 (India Standard Time) - Req URL: /api/posts?caption=%22first%22 - Req Body: {}\n","service":"Request - Logging"}
 {"level":"info","message":"Wed Jun 05 2024 10:18:13 GMT+0530 (India Standard Time) - Req URL: /api/posts?caption=%22first%22 - Req Body: {}\n","service":"Request - Logging"}
 {"level":"info","message":"Wed Jun 05 2024 10:18:42 GMT+0530 (India Standard Time) - Req URL: /api/posts?caption=first - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:21:18 GMT+0530 (India Standard Time) - Req URL: /api/posts/ - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:21:42 GMT+0530 (India Standard Time) - Req URL: /api/posts?caption=first - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:22:00 GMT+0530 (India Standard Time) - Req URL: /api/posts?offset=-5&limit=5 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:22:07 GMT+0530 (India Standard Time) - Req URL: /api/posts?offset=-5&limit=5 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:22:13 GMT+0530 (India Standard Time) - Req URL: /api/posts?offset=5&limit=5 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:22:24 GMT+0530 (India Standard Time) - Req URL: /api/posts?offset=2&limit=5 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:23:14 GMT+0530 (India Standard Time) - Req URL: /api/posts?caption=%22first%22&offset=5&limit=5 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:23:18 GMT+0530 (India Standard Time) - Req URL: /api/posts?caption=%22first%22&offset=1&limit=5 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:23:26 GMT+0530 (India Standard Time) - Req URL: /api/posts?caption=%22first%22&offset=1&limit=5 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:25:13 GMT+0530 (India Standard Time) - Req URL: /api/posts?caption=%22first%22&offset=1&limit=5 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:25:25 GMT+0530 (India Standard Time) - Req URL: /api/posts?caption=%22first%22&offset=0&limit=5 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:25:31 GMT+0530 (India Standard Time) - Req URL: /api/posts?caption=first&offset=0&limit=5 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:25:35 GMT+0530 (India Standard Time) - Req URL: /api/posts?caption=first&offset=2&limit=5 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:26:24 GMT+0530 (India Standard Time) - Req URL: /api/posts/1 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:26:32 GMT+0530 (India Standard Time) - Req URL: /api/posts/1 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:26:44 GMT+0530 (India Standard Time) - Req URL: /api/posts/1 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:26:51 GMT+0530 (India Standard Time) - Req URL: /api/posts/1 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:26:55 GMT+0530 (India Standard Time) - Req URL: /api/posts/1 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:27:26 GMT+0530 (India Standard Time) - Req URL: /api/posts/1 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:27:34 GMT+0530 (India Standard Time) - Req URL: /api/posts/1 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:28:00 GMT+0530 (India Standard Time) - Req URL: /api/posts/2 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:28:44 GMT+0530 (India Standard Time) - Req URL: /api/posts/1 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:28:48 GMT+0530 (India Standard Time) - Req URL: /api/posts/1 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:28:54 GMT+0530 (India Standard Time) - Req URL: /api/posts/2 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:29:01 GMT+0530 (India Standard Time) - Req URL: /api/posts/3 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:29:04 GMT+0530 (India Standard Time) - Req URL: /api/posts/3 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:29:59 GMT+0530 (India Standard Time) - Req URL: /api/comments/1 - Req Body: {\"content\":\"Comment content\"}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:30:07 GMT+0530 (India Standard Time) - Req URL: /api/comments/2 - Req Body: {\"content\":\"Comment content\"}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:30:12 GMT+0530 (India Standard Time) - Req URL: /api/comments/3 - Req Body: {\"content\":\"Comment content\"}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:30:16 GMT+0530 (India Standard Time) - Req URL: /api/comments/1 - Req Body: {\"content\":\"Comment content\"}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:30:17 GMT+0530 (India Standard Time) - Req URL: /api/comments/1 - Req Body: {\"content\":\"Comment content\"}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:30:18 GMT+0530 (India Standard Time) - Req URL: /api/comments/1 - Req Body: {\"content\":\"Comment content\"}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:30:19 GMT+0530 (India Standard Time) - Req URL: /api/comments/1 - Req Body: {\"content\":\"Comment content\"}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:30:26 GMT+0530 (India Standard Time) - Req URL: /api/comments/1 - Req Body: {\"content\":\"Comment content\"}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:30:37 GMT+0530 (India Standard Time) - Req URL: /api/comments/1 - Req Body: {\"content\":\"\"}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:31:22 GMT+0530 (India Standard Time) - Req URL: /api/comments/1 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:32:01 GMT+0530 (India Standard Time) - Req URL: /api/comments/2 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:32:10 GMT+0530 (India Standard Time) - Req URL: /api/comments/ - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:32:14 GMT+0530 (India Standard Time) - Req URL: /api/comments/1 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:32:57 GMT+0530 (India Standard Time) - Req URL: /api/comments/1 - Req Body: {\"content\":\"Modified content\"}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:33:04 GMT+0530 (India Standard Time) - Req URL: /api/comments/1 - Req Body: {\"content\":\"Modified content\"}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:33:18 GMT+0530 (India Standard Time) - Req URL: /api/comments/2 - Req Body: {\"content\":\"Modified content\"}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:33:25 GMT+0530 (India Standard Time) - Req URL: /api/comments/3 - Req Body: {\"content\":\"Modified content\"}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:35:29 GMT+0530 (India Standard Time) - Req URL: /api/comments/1?offset=2&limit=5 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:36:15 GMT+0530 (India Standard Time) - Req URL: /api/comments/1?offset=asd&limit=5 - Req Body: {}\n","service":"Request - Logging"}
+{"level":"info","message":"Wed Jun 05 2024 10:36:42 GMT+0530 (India Standard Time) - Req URL: /api/comments/1?offset=asd&limit=5 - Req Body: {}\n","service":"Request - Logging"}

@@ -17,7 +17,11 @@ router.post(
   ValidationMiddleware.commentsValidation,
   commentController.createNewComment
 );
-router.get("/:id", commentController.getAllCommentsRelatedToAPost);
+router.get(
+  "/:id",
+  ValidationMiddleware.queryParamsValidations,
+  commentController.getAllCommentsRelatedToAPost
+);
 router.put(
   "/:id",
   ValidationMiddleware.commentsValidation,
