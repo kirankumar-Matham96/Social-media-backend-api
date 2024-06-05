@@ -1,5 +1,5 @@
 // package import
-import { body, validationResult } from "express-validator";
+import { body, query, validationResult } from "express-validator";
 
 // module imports
 import { CustomErrorHandling } from "./customErrorHandling.middleware.js";
@@ -54,6 +54,40 @@ export class ValidationMiddleware {
       await body("password")
         .notEmpty()
         .withMessage("password is required")
+        .run(req);
+
+      const validationResults = validationResult(req);
+
+      if (validationResults.array().length > 0) {
+        return res
+          .status(400)
+          .send({ status: "failure", error: validationResults.array()[0].msg });
+      }
+      next();
+    } catch (error) {
+      console.log(error);
+      return res.status(500).send({
+        status: "failure",
+        error: "Oops! Something went wrong... Please try later again",
+      });
+    }
+  };
+
+  /**
+   * validates query params
+   */
+  static queryParamsValidations = async (req, res, next) => {
+    try {
+      await query("offset")
+        .optional()
+        .isInt({ min: 0 })
+        .withMessage("offset must be a positive integer")
+        .run(req);
+
+      await query("limit")
+        .optional()
+        .isInt({ min: 0 })
+        .withMessage("limit must be a positive integer")
         .run(req);
 
       const validationResults = validationResult(req);

@@ -10,7 +10,7 @@ import "dotenv/config";
 import { CustomErrorHandling } from "./customErrorHandling.middleware.js";
 
 /**
- * This function will authorize the user by verifying the JWT token 
+ * This function will authorize the user by verifying the JWT token
  */
 export const auth = (req, res, next) => {
   // getting the token from the request headers

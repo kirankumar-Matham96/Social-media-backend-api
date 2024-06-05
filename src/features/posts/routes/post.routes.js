@@ -26,9 +26,17 @@ router.post(
   ValidationMiddleware.postsValidation,
   PostHelper.saveDraft
 );
-router.get("/all", postController.getAllPosts);
+router.get(
+  "/all",
+  ValidationMiddleware.queryParamsValidations,
+  postController.getAllPosts
+);
 router.get("/:id", postController.getPostById);
-router.get("/", postController.getUserPosts);
+router.get(
+  "/",
+  ValidationMiddleware.queryParamsValidations,
+  postController.getUserPosts
+);
 router.put(
   "/:id",
   upload.single("image"),
