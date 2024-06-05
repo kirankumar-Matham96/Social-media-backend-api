@@ -160,8 +160,8 @@ A Node.js application to create, update, delete posts, comments and likes. Build
 
 - `POST /api/comments/<POST_ID>`: Add a new comment
 - `GET /api/comments/<POST_ID>`: Get all comments related to a post
-- `PUT /api/comments/<POST_ID>`: Update comment by ID
-- `DELETE /api/comments/<POST_ID>`: Delete comment by ID
+- `PUT /api/comments/<COMMENT_ID>`: Update comment by ID
+- `DELETE /api/comments/<COMMENT_ID>`: Delete comment by ID
 
 ### Like Routes
 
