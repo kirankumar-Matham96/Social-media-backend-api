@@ -89,15 +89,19 @@ class LikeModel {
       (like) => like.userId === userId && like.postId === postId
     );
 
+    let message = "";
+
     if (likedIndex == -1) {
       // if index not found, creating a new like model
       const newLike = new LikeModel(userId, postId);
       likes.push(newLike);
+      message = "liked";
     } else {
       // if index found, removing the like
       likes.splice(likedIndex, 1);
+      message = "disliked";
     }
-    return { status: 200 };
+    return { message, status: 200 };
   };
 
   /**
@@ -107,12 +111,10 @@ class LikeModel {
    *   userId: logged in user id
    *   postId: post id
    */
-  static getAllOfPost = (userId, postId) => {
+  static getAllLikesOfPost = (postId) => {
     // filtering the like of a specific post
-    const posts = likes.filter(
-      (like) => like.userId === userId && like.postId === postId
-    );
-    return { posts, status: 200 };
+    const filteredLikes = likes.filter((like) => like.postId === postId);
+    return { likes: filteredLikes, status: 200 };
   };
 }
 

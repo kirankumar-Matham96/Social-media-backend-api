@@ -15,7 +15,7 @@ class LikeController {
    *   id: post id extracted from request params.
    */
   toggleLike = (req, res) => {
-     // extracting the data from the request
+    // extracting the data from the request
     const { userId } = req;
     const { id } = req.params;
 
@@ -23,14 +23,14 @@ class LikeController {
     if (!id) {
       throw new CustomErrorHandling("post id is required");
     }
-    
+
     // passing the details to model function
-    const { status } = LikeModel.toggle(userId, id);
-   
+    const { message, status } = LikeModel.toggle(userId, id);
+
     // sending response
     res
       .status(status)
-      .send({ status: "success", message: "post liked successfully" });
+      .send({ status: "success", message: `post ${message} successfully` });
   };
 
   /**
@@ -42,23 +42,22 @@ class LikeController {
    *   id: post id extracted from request params.
    */
   getAllLikesOfAPost = (req, res) => {
-     // extracting the data from the request
-    const { userId } = req;
+    // extracting the data from the request
     const { id } = req.params;
 
-     // if post id is not passed
+    // if post id is not passed
     if (!id) {
       throw new CustomErrorHandling("post id is required");
     }
 
-     // passing the details to model function
-    const { posts, status } = LikeModel.getAllOfPost(userId, id);
-    
-     // sending response
+    // passing the details to model function
+    const { likes, status } = LikeModel.getAllLikesOfPost(id);
+
+    // sending response
     res.status(status).send({
       status: "success",
-      message: "post disliked successfully",
-      posts,
+      message: "likes retrieved",
+      likes: likes,
     });
   };
 }
