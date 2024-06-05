@@ -20,7 +20,7 @@ export const errorHandlingMiddleware = (err, req, res, next) => {
   }
 
   // if the error is unhandled
-  console.log(err);
+  console.log("Unhandled error => ", err);
   return res.status(500).send({
     status: "failure",
     error: "Oops! Something went wrong... Please try later again",

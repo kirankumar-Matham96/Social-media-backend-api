@@ -7,16 +7,76 @@ import { CustomErrorHandling } from "../../../middlewares/customErrorHandling.mi
 // comments list
 const comments = [
   {
-    id: "post_1",
+    id: "1",
     userId: "1",
     postId: "1",
     content: "1 Some post related content",
   },
   {
-    id: "post_2",
+    id: "2",
     userId: "1",
     postId: "2",
     content: "2 Some post related content",
+  },
+  {
+    id: "3",
+    userId: "2",
+    postId: "3",
+    content: "3 Some post related content",
+  },
+  {
+    id: "4",
+    userId: "2",
+    postId: "4",
+    content: "4 Some post related content",
+  },
+  {
+    id: "5",
+    userId: "1",
+    postId: "5",
+    content: "5 Some post related content",
+  },
+  {
+    id: "6",
+    userId: "1",
+    postId: "6",
+    content: "6 Some post related content",
+  },
+  {
+    id: "7",
+    userId: "2",
+    postId: "7",
+    content: "7 Some post related content",
+  },
+  {
+    id: "8",
+    userId: "2",
+    postId: "8",
+    content: "8 Some post related content",
+  },
+  {
+    id: "9",
+    userId: "1",
+    postId: "9",
+    content: "9 Some post related content",
+  },
+  {
+    id: "10",
+    userId: "1",
+    postId: "10",
+    content: "10 Some post related content",
+  },
+  {
+    id: "11",
+    userId: "2",
+    postId: "11",
+    content: "11 Some post related content",
+  },
+  {
+    id: "12",
+    userId: "2",
+    postId: "1",
+    content: "12 Some post related content",
   },
 ];
 

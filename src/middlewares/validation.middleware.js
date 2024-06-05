@@ -8,7 +8,7 @@ export class ValidationMiddleware {
   /**
    * validates user signup data
    */
-  static userSignUpValidation = async (req, res, next) => { 
+  static userSignUpValidation = async (req, res, next) => {
     try {
       await body("name").notEmpty().withMessage("name is required").run(req);
       await body("email")
@@ -24,11 +24,17 @@ export class ValidationMiddleware {
       const validationResults = validationResult(req);
 
       if (validationResults.array().length > 0) {
-        throw new Error(validationResults.array()[0].msg, 400);
+        return res
+          .status(400)
+          .send({ status: "failure", error: validationResults.array()[0].msg });
       }
       next();
     } catch (error) {
       console.log(error);
+      return res.status(500).send({
+        status: "failure",
+        error: "Oops! Something went wrong... Please try later again",
+      });
     }
   };
 
@@ -50,11 +56,17 @@ export class ValidationMiddleware {
       const validationResults = validationResult(req);
 
       if (validationResults.array().length > 0) {
-        throw new Error(validationResults.array()[0].msg, 400);
+        return res
+          .status(400)
+          .send({ status: "failure", error: validationResults.array()[0].msg });
       }
       next();
     } catch (error) {
       console.log(error);
+      return res.status(500).send({
+        status: "failure",
+        error: "Oops! Something went wrong... Please try later again",
+      });
     }
   };
 
@@ -69,13 +81,19 @@ export class ValidationMiddleware {
         .run(req);
 
       const validationResults = validationResult(req);
-      
+
       if (validationResults.array().length > 0) {
-        throw new Error(validationResults.array()[0].msg, 400);
+        return res
+          .status(400)
+          .send({ status: "failure", error: validationResults.array()[0].msg });
       }
       next();
     } catch (error) {
       console.log(error);
+      return res.status(500).send({
+        status: "failure",
+        error: "Oops! Something went wrong... Please try later again",
+      });
     }
   };
 
@@ -92,11 +110,17 @@ export class ValidationMiddleware {
       const validationResults = validationResult(req);
 
       if (validationResults.array().length > 0) {
-        throw new Error(validationResults.array()[0].msg, 400);
+        return res
+          .status(400)
+          .send({ status: "failure", error: validationResults.array()[0].msg });
       }
       next();
     } catch (error) {
       console.log(error);
+      return res.status(500).send({
+        status: "failure",
+        error: "Oops! Something went wrong... Please try later again",
+      });
     }
   };
 }

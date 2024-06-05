@@ -3,3 +3,6 @@
 
 # environment variables
 .env
+
+# personal validation scenarios
+/validation scenarios.txt

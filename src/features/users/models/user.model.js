@@ -6,8 +6,8 @@ import { CustomErrorHandling } from "../../../middlewares/customErrorHandling.mi
 
 // users list
 const users = [
-  { id: "1", name: "kiran", email: "kiran1@gmail.com", password: "12qsw3e" },
-  { id: "2", name: "kiran", email: "kiran2@gmail.com", password: "12qsw3e" },
+  { id: "1", name: "User 1", email: "user1@gmail.com", password: "user1" },
+  { id: "2", name: "User 2", email: "user2@gmail.com", password: "user2" },
 ];
 
 /**
@@ -47,14 +47,14 @@ class UserModel {
   /**
    * model function to retrieve a user by id
    * throws error if user not found
-   * 
+   *
    * parameters:
    *   id: user id
    */
   static get = (id) => {
     // finding the user by id
     const userFound = users.find((user) => user.id === id);
-    
+
     // if user not found
     if (!userFound) {
       throw new CustomErrorHandling("user not found", 404);
@@ -65,7 +65,7 @@ class UserModel {
   /**
    * model function to confirm the user login
    * throws error if user not found or password not match
-   * 
+   *
    * parameters:
    *   email: user email
    *   password: user password
@@ -73,7 +73,7 @@ class UserModel {
   static confirmLogin = (email, password) => {
     // finding the user by email
     const userFound = users.find((user) => user.email === email);
-    
+
     // if the user not found
     if (!userFound) {
       throw new CustomErrorHandling("user not found", 404);
